@@ -10,6 +10,8 @@ namespace MyNewFactory
     {
         private List<Material> materialsInStorage = new();
         int[] materialAmountInStorage = new int[6];
+        public List<Material> materialsToSendToFactory = new();
+        List<string> productsDone = new();
 
 
 
@@ -18,7 +20,7 @@ namespace MyNewFactory
             for (int i = 0; i < 6; i++)
             {
                 materialsInStorage.Add((Material)i);
-                materialAmountInStorage[i] = new Random().Next(0, 16);
+                materialAmountInStorage[i] = new Random().Next(2, 16);
                 //Console.WriteLine($"{i+1}. {materialsInStorage[i], -15} Amount: {materialAmountInStorage[i]}");
             }
         }
@@ -28,7 +30,100 @@ namespace MyNewFactory
             Console.WriteLine("-----Materials in storage-----");
             for (int i = 0; i < materialsInStorage.Count; i++)
             {
-                Console.WriteLine($"{i+1}. {materialsInStorage[i], -15} Amount: {materialAmountInStorage[i]}");
+                Console.WriteLine($"{i + 1}. {materialsInStorage[i],-15} Amount: {materialAmountInStorage[i]}");
+            }
+            Console.WriteLine();
+            Console.WriteLine("-----Products you've made-----");
+            for (int i = 0; i < productsDone.Count; i++)
+            {
+                Console.WriteLine(productsDone[i]);
+            }
+        }
+
+        public void ShowMaterialsToSend()
+        {
+            Console.WriteLine("-----Materials to send-----");
+            for (int i = 0; i < materialsToSendToFactory.Count; i++)
+            {
+                Console.WriteLine(materialsToSendToFactory[i]);
+            }
+        }
+
+        public void UserPicksMaterial()
+        {
+            materialsToSendToFactory.Clear();
+            while (true)
+            {
+                Console.Clear();
+                ShowStorage();
+                Console.WriteLine();
+                ShowMaterialsToSend();
+                Console.WriteLine("Enter the number for which material you want to send to the factory: ");
+                var inputKey = Console.ReadKey(true).KeyChar;
+                if (char.IsDigit(inputKey))
+                {
+                    int userInput = int.Parse(inputKey.ToString());
+                    userInput--;
+                    if (userInput < 6) //only choices 1-6 (indexes 0-5)
+                    {
+
+                        if (materialAmountInStorage[userInput] > 0)
+                        {
+                            materialsToSendToFactory.Add((Material)userInput);
+                            materialAmountInStorage[userInput]--;
+
+                        }
+                        
+                    }
+
+                    else
+                    {
+                        break;
+                    }
+                    
+                }
+                else
+                {
+                    break;
+                }
+
+            }
+        }
+        public void SendingMaterialsToFactory()
+        {
+            Console.Clear();
+            string transportingMaterial = "Material is being transported...";
+            char[] transportingMaterialLetters = transportingMaterial.ToCharArray();
+            for (int i = 0; i < transportingMaterialLetters.Length; i++)
+            {
+                Console.Write(transportingMaterialLetters[i]);
+                System.Threading.Thread.Sleep(200);
+            }
+            Console.Clear();
+                Console.WriteLine("Material has been delivered!");
+                System.Threading.Thread.Sleep(2000);
+            
+        }
+
+        public void ReceivingMaterialLeftOvers(List<Material> fabricleft, List<Material> redPaint, List<Material> rubber, List<Material> screws, List<Material> steel, List<Material> wood)
+        {
+            materialAmountInStorage[0] += fabricleft.Count;
+            materialAmountInStorage[1] += redPaint.Count;
+            materialAmountInStorage[2] += rubber.Count;
+            materialAmountInStorage[3] += screws.Count;
+            materialAmountInStorage[4] += steel.Count;
+            materialAmountInStorage[5] += wood.Count;
+        }
+        public void GettingProducts(List<string> productsMade )
+        {
+            productsDone = productsMade;
+        }
+        public void ShowProductsMade()
+        {
+            Console.WriteLine("Products that you've produced!");
+            for (int i = 0; i < productsDone.Count; i++)
+            {
+                Console.WriteLine(productsDone[i]);
             }
         }
 
