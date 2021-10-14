@@ -18,7 +18,7 @@ namespace MyNewFactory
             for (int i = 0; i < 6; i++)
             {
                 materialsInStorage.Add((Material)i);
-                materialAmountInStorage[i] = new Random().Next(0, 16);
+                materialAmountInStorage[i] = new Random().Next(2, 16);
                 //Console.WriteLine($"{i+1}. {materialsInStorage[i], -15} Amount: {materialAmountInStorage[i]}");
             }
         }
