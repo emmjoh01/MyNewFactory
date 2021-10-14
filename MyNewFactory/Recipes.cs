@@ -12,26 +12,26 @@ namespace MyNewFactory
 
         private string ProductName { get; }
 
-        private int RequierdAmountOfFabric { get; }
-        private int RequierdAmountOfRedPaint { get; }
-        private int RequierdAmountOfRubber { get; }
-        private int RequierdAmountOfScrews { get; }
-        private int RequierdAmountOfSteel { get; }
-        private int RequierdAmountOfWood { get; }
+        private int RequiredAmountOfFabric { get; }
+        private int RequiredAmountOfRedPaint { get; }
+        private int RequiredAmountOfRubber { get; }
+        private int RequiredAmountOfScrews { get; }
+        private int RequiredAmountOfSteel { get; }
+        private int RequiredAmountOfWood { get; }
 
         public Recipes()
         {
 
         }
-        public Recipes(string productName, int requierdFabric, int requierdRedPaint, int requierdRubber, int requierdScrews, int requierdSteel, int requierdWood)
+        public Recipes(string productName, int requiredFabric, int requiredRedPaint, int requiredRubber, int requiredScrews, int requiredSteel, int requiredWood)
         {
             ProductName = productName;
-            RequierdAmountOfFabric = requierdFabric;
-            RequierdAmountOfRedPaint = requierdRedPaint;
-            RequierdAmountOfRubber = requierdRubber;
-            RequierdAmountOfScrews = requierdScrews;
-            RequierdAmountOfSteel = requierdSteel;
-            RequierdAmountOfWood = requierdWood;
+            RequiredAmountOfFabric = requiredFabric;
+            RequiredAmountOfRedPaint = requiredRedPaint;
+            RequiredAmountOfRubber = requiredRubber;
+            RequiredAmountOfScrews = requiredScrews;
+            RequiredAmountOfSteel = requiredSteel;
+            RequiredAmountOfWood = requiredWood;
         }
 
         public void RecipeCreater()
