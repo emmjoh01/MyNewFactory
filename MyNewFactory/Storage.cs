@@ -97,7 +97,7 @@ namespace MyNewFactory
             for (int i = 0; i < transportingMaterialLetters.Length; i++)
             {
                 Console.Write(transportingMaterialLetters[i]);
-                System.Threading.Thread.Sleep(200);
+                System.Threading.Thread.Sleep(30);
             }
             Console.Clear();
                 Console.WriteLine("Material has been delivered!");
