@@ -8,21 +8,20 @@ namespace MyNewFactory
         {
             Storage myMagicalStorage = new();
             Factory myMagicalFactory = new();
-            
-            //Welcome-message
+
+            Console.WriteLine("Welcome to the magic Factory Game! Lets start by going to the storage and pick som material ti use!");
             //While 
             while(true)
             {
-                //Show materials in storage++
-                //User picks materials++
+                //Shows material and products in storage, Shows earlier picked material and lets user pick materials
             myMagicalStorage.UserPicksMaterial();
-            //Shows earlier picked material ++
-
+            
             //Material sent to factory
-            myMagicalStorage.SendingMaterialsToFactory();
             myMagicalFactory.ReceivingMaterials(myMagicalStorage.materialsToSendToFactory);
-            //Chosen materialn matches with products
+
+                //MatchMaking materials and products
             myMagicalFactory.MatchingRecipesWithMaterial();
+
             //Returning pruducts and material-leftovers
             myMagicalStorage.ReceivingMaterialLeftOvers(myMagicalFactory.fabricInFactory, myMagicalFactory.redPaintInFactory, myMagicalFactory.rubberInFactory, myMagicalFactory.screwsInFactory, myMagicalFactory.steelInFactory, myMagicalFactory.woodInFactory);
             myMagicalFactory.MaterialsHaveBeenSentAway();

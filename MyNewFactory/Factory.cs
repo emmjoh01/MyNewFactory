@@ -9,7 +9,7 @@ namespace MyNewFactory
     class Factory
     {
         List<Material> materialsInFabric = new();
-        public List<Material> fabricInFactory = new();
+        public List<Material> fabricInFactory = new(); //A list for every material to split the incomming list with every material into its own list
         public List<Material> redPaintInFactory = new();
         public List<Material> rubberInFactory = new();
         public List<Material> screwsInFactory = new();
@@ -23,6 +23,7 @@ namespace MyNewFactory
             SplittingMaterials(materialsInFabric);
         }
 
+        //Finding all materials of each and puts it in the right materiallist
         public void SplittingMaterials(List<Material> materialsToFactory)
         {
             fabricInFactory.AddRange(materialsToFactory.FindAll(x => x.Equals(Material.Fabric)));
@@ -33,6 +34,7 @@ namespace MyNewFactory
             woodInFactory.AddRange(materialsToFactory.FindAll(x => x.Equals(Material.Wood)));
         }
 
+        //Checking how much each recipe requier from each material and try if each list om each material contains the same amount or more.
         public void MatchingRecipesWithMaterial()
         {
             if (fabricInFactory.Count >= 3 && screwsInFactory.Count>=2 && steelInFactory.Count>=1 && woodInFactory.Count >= 4)
@@ -73,9 +75,3 @@ namespace MyNewFactory
         }
     }
 }
-
-
-
-
-//ProvidedRubber.AddRange(MaterialsForProduction.FindAll(x => x.Equals(Material.rubber)));
-//ProvidedSteel.AddRange(MaterialsForProduction.FindAll(x => x.Equals(Material.steel)));

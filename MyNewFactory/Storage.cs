@@ -12,6 +12,9 @@ namespace MyNewFactory
         int[] materialAmountInStorage = new int[6];
         public List<Material> materialsToSendToFactory = new();
         List<string> productsDone = new();
+        bool isPossibleToProduceMore;
+        List<string> PossibleToProduce = new();
+        List<Material> allMaterialsInStorage = new();
 
 
 
@@ -21,7 +24,6 @@ namespace MyNewFactory
             {
                 materialsInStorage.Add((Material)i);
                 materialAmountInStorage[i] = new Random().Next(2, 16);
-                //Console.WriteLine($"{i+1}. {materialsInStorage[i], -15} Amount: {materialAmountInStorage[i]}");
             }
         }
 
@@ -60,7 +62,7 @@ namespace MyNewFactory
                 ShowMaterialsToSend();
                 Console.WriteLine("Enter the number for which material you want to send to the factory: ");
                 var inputKey = Console.ReadKey(true).KeyChar;
-                if (char.IsDigit(inputKey))
+                if (char.IsDigit(inputKey)) 
                 {
                     int userInput = int.Parse(inputKey.ToString());
                     userInput--;
@@ -105,6 +107,7 @@ namespace MyNewFactory
             
         }
 
+        //To get the right amount of materials back in storage to use.
         public void ReceivingMaterialLeftOvers(List<Material> fabricleft, List<Material> redPaint, List<Material> rubber, List<Material> screws, List<Material> steel, List<Material> wood)
         {
             materialAmountInStorage[0] += fabricleft.Count;
@@ -126,6 +129,31 @@ namespace MyNewFactory
                 Console.WriteLine(productsDone[i]);
             }
         }
+
+        //public bool TryToProduceWithWhatsLeft()
+        //{
+        //    for (int i = 0; i < materialsInStorage.Count; i++)
+        //    {
+        //        for (int y = 0; y < materialAmountInStorage[i]; y++)
+        //        {
+        //            if (y<=materialAmountInStorage[i])
+        //            {
+        //                allMaterialsInStorage.Add(materialsInStorage[i]);
+        //            }
+        //        }
+        //    }
+
+
+        //    if (PossibleToProduce.Count > 0)
+        //    {
+        //        isPossibleToProduceMore = true;
+        //    }
+        //    else
+        //    {
+        //        isPossibleToProduceMore = false;
+        //    }
+        //    return isPossibleToProduceMore;
+        //}
 
     }
 }
