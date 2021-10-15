@@ -96,10 +96,8 @@ namespace MyNewFactory
             char[] transportingMaterialLetters = transportingMaterial.ToCharArray();
             for (int i = 0; i < transportingMaterialLetters.Length; i++)
             {
-
                 Console.Write(transportingMaterialLetters[i]);
                 System.Threading.Thread.Sleep(30);
-
             }
             Console.Clear();
                 Console.WriteLine("Material has been delivered!");
