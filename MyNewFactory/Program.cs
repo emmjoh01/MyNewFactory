@@ -8,10 +8,10 @@ namespace MyNewFactory
         {
             Storage myMagicalStorage = new();
             Factory myMagicalFactory = new();
-
+            bool isPossibleToProduceMore = true;
             Console.WriteLine("Welcome to the magic Factory Game! Lets start by going to the storage and pick som material ti use!");
             //While 
-            while(true)
+            while(isPossibleToProduceMore)
             {
                 //Shows material and products in storage, Shows earlier picked material and lets user pick materials
             myMagicalStorage.UserPicksMaterial();
@@ -20,7 +20,7 @@ namespace MyNewFactory
             myMagicalFactory.ReceivingMaterials(myMagicalStorage.materialsToSendToFactory);
 
                 //MatchMaking materials and products
-            myMagicalFactory.MatchingRecipesWithMaterial();
+            myMagicalFactory.MatchingRecipesWithMaterial(true);
 
             //Returning pruducts and material-leftovers
             myMagicalStorage.ReceivingMaterialLeftOvers(myMagicalFactory.fabricInFactory, myMagicalFactory.redPaintInFactory, myMagicalFactory.rubberInFactory, myMagicalFactory.screwsInFactory, myMagicalFactory.steelInFactory, myMagicalFactory.woodInFactory);
@@ -35,6 +35,10 @@ namespace MyNewFactory
 
                 Console.WriteLine("Press any key to continue.");
                 Console.ReadKey();
+                myMagicalStorage.TryToProduceWithWhatsLeft();
+                myMagicalFactory.ReceivingMaterials(myMagicalStorage.allMaterialsInStorage);
+                isPossibleToProduceMore = myMagicalFactory.MatchingRecipesWithMaterial(false);
+                myMagicalFactory.MaterialsHaveBeenSentAway();
             }
         }
     }

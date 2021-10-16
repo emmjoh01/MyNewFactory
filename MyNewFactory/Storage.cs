@@ -14,7 +14,7 @@ namespace MyNewFactory
         List<string> productsDone = new();
         bool isPossibleToProduceMore;
         List<string> PossibleToProduce = new();
-        List<Material> allMaterialsInStorage = new();
+        public List<Material> allMaterialsInStorage = new();
 
 
 
@@ -130,30 +130,21 @@ namespace MyNewFactory
             }
         }
 
-        //public bool TryToProduceWithWhatsLeft()
-        //{
-        //    for (int i = 0; i < materialsInStorage.Count; i++)
-        //    {
-        //        for (int y = 0; y < materialAmountInStorage[i]; y++)
-        //        {
-        //            if (y<=materialAmountInStorage[i])
-        //            {
-        //                allMaterialsInStorage.Add(materialsInStorage[i]);
-        //            }
-        //        }
-        //    }
-
-
-        //    if (PossibleToProduce.Count > 0)
-        //    {
-        //        isPossibleToProduceMore = true;
-        //    }
-        //    else
-        //    {
-        //        isPossibleToProduceMore = false;
-        //    }
-        //    return isPossibleToProduceMore;
-        //}
+        public List<Material> TryToProduceWithWhatsLeft()
+        {
+            allMaterialsInStorage.Clear();
+            for (int i = 0; i < materialsInStorage.Count; i++)
+            {
+                for (int y = 0; y < materialAmountInStorage[i]; y++)
+                {
+                    if (y <= materialAmountInStorage[i])
+                    {
+                        allMaterialsInStorage.Add(materialsInStorage[i]);
+                    }
+                }
+            }
+            return allMaterialsInStorage;
+        }
 
     }
 }
