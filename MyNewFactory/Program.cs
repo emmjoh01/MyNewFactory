@@ -19,33 +19,35 @@ namespace MyNewFactory
                 //Material sent to factory
                 myMagicalFactory.ReceivingMaterials(myMagicalStorage.materialsToSendToFactory);
 
-                //MatchMaking materials and products
+                //MatchMaking materials and products, true is sent in true because it is the user who sent in these materials
                 myMagicalFactory.MatchingRecipesWithMaterial(true);
 
-                //Returning pruducts and material-leftovers
+                //Returning material-leftovers from factory
                 myMagicalStorage.ReceivingMaterialLeftOvers(myMagicalFactory.fabricInFactory, myMagicalFactory.redPaintInFactory, myMagicalFactory.rubberInFactory, myMagicalFactory.screwsInFactory, myMagicalFactory.steelInFactory, myMagicalFactory.woodInFactory);
+
+                //Emptying material in factory because it has been sent back to storage
                 myMagicalFactory.MaterialsHaveBeenSentAway();
+
+                //Reciving produced products
                 myMagicalStorage.GettingProducts(myMagicalFactory.productsMade);
-                //Check if anything is possible to make with what's left in storage
-                //Message material out of stock or nothing more to make. Game's ended
-                //Console.Clear();
-                //myMagicalStorage.ShowProductsMade();
 
-                ////------------Make a Method to check if anything more can be produced with what material that´s left-------------
-
-                //Console.WriteLine("Press any key to continue.");
-                //Console.ReadKey();
+                //Summon all material in storage and sends to factory
                 myMagicalStorage.TryToProduceWithWhatsLeft();
                 myMagicalFactory.ReceivingMaterials(myMagicalStorage.allMaterialsInStorage);
+
+                //Checks if the materials in storage is enough to produce anything, sending in false because we just want to check
+                //if it's possible, not to acctuallu produce anything.
                 isPossibleToProduceMore = myMagicalFactory.MatchingRecipesWithMaterial(false);
+
+                //Emptying material in storage
                 myMagicalFactory.MaterialsHaveBeenSentAway();
             }
             Console.Clear();
             myMagicalStorage.ShowProductsMade();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Nothing more is possible to produce.");
-            Console.ReadKey();
             Console.ResetColor();
+            Console.ReadKey();
         }
     }
 }

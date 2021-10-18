@@ -52,6 +52,7 @@ namespace MyNewFactory
 
                 isPossibleToProduceMore = true;
             }
+
             if(redPaintInFactory.Count >= 1 && woodInFactory.Count>=2)
             {
                 if (usersentMaterial)
@@ -63,6 +64,7 @@ namespace MyNewFactory
 
                 isPossibleToProduceMore = true;
             }
+
             if(redPaintInFactory.Count>=2 &&  rubberInFactory.Count>=2&&screwsInFactory.Count>=3&&steelInFactory.Count>=2)
             {
                 if (usersentMaterial)
@@ -76,6 +78,7 @@ namespace MyNewFactory
 
                 isPossibleToProduceMore = true;
             }
+
             if (fabricInFactory.Count>=2 && redPaintInFactory.Count>=1)
             {
                 if (usersentMaterial)
@@ -89,6 +92,7 @@ namespace MyNewFactory
             }
             return isPossibleToProduceMore;
         }
+
         public void MaterialsHaveBeenSentAway()
         {
             fabricInFactory.Clear();

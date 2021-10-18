@@ -16,8 +16,6 @@ namespace MyNewFactory
         List<string> PossibleToProduce = new();
         public List<Material> allMaterialsInStorage = new();
 
-
-
         public Storage() //Filling storage with materials, random amount between 0 to 15 of each
         {
             for (int i = 0; i < 6; i++)
@@ -100,6 +98,7 @@ namespace MyNewFactory
 
             }
         }
+
         public void SendingMaterialsToFactory()
         {
             Console.Clear();
@@ -113,7 +112,6 @@ namespace MyNewFactory
             Console.Clear();
                 Console.WriteLine("Material has been delivered!");
                 System.Threading.Thread.Sleep(2000);
-            
         }
 
         //To get the right amount of materials back in storage to use.
@@ -126,10 +124,12 @@ namespace MyNewFactory
             materialAmountInStorage[4] += steel.Count;
             materialAmountInStorage[5] += wood.Count;
         }
+
         public void GettingProducts(List<string> productsMade )
         {
             productsDone = productsMade;
         }
+
         public void ShowProductsMade()
         {
             Console.WriteLine("Products that you've produced:");
