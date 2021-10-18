@@ -24,7 +24,7 @@ namespace MyNewFactory
 
                 Console.Clear();
                 Console.Title = "The Magic Factory";
-                //Making loadingscreen a little funnier.... or just less fast....
+                //Making loadingscreen a bit less boring
                 char[] loading = "Looking for matching blueprint".ToCharArray();
                 for (int i = 0; i < loading.Length; i++)
                 {
