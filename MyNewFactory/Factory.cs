@@ -8,7 +8,7 @@ namespace MyNewFactory
 {
     class Factory
     {
-        List<Material> materialsInFabric = new();
+        List<Material> _materialsInFactory= new();
         public List<Material> fabricInFactory = new(); //A list for every material to split the incomming list with every material into its own list
         public List<Material> redPaintInFactory = new();
         public List<Material> rubberInFactory = new();
@@ -20,19 +20,19 @@ namespace MyNewFactory
 
         public void ReceivingMaterials(List<Material> materialsToFactory)
         {
-            materialsInFabric = materialsToFactory;
-            SplittingMaterials(materialsInFabric);
+            _materialsInFactory = materialsToFactory;
+            SplittingMaterials();
         }
 
         //Finding all materials of each and puts it in the right materiallist
-        public void SplittingMaterials(List<Material> materialsToFactory)
+        public void SplittingMaterials()
         {
-            fabricInFactory.AddRange(materialsToFactory.FindAll(x => x.Equals(Material.Fabric)));
-            redPaintInFactory.AddRange(materialsToFactory.FindAll(x => x.Equals(Material.RedPaint)));
-            rubberInFactory.AddRange(materialsToFactory.FindAll(x => x.Equals(Material.Rubber)));
-            screwsInFactory.AddRange(materialsToFactory.FindAll(x => x.Equals(Material.Screws)));
-            steelInFactory.AddRange(materialsToFactory.FindAll(x => x.Equals(Material.Steel)));
-            woodInFactory.AddRange(materialsToFactory.FindAll(x => x.Equals(Material.Wood)));
+            fabricInFactory.AddRange(_materialsInFactory.FindAll(x => x.Equals(Material.Fabric)));
+            redPaintInFactory.AddRange(_materialsInFactory.FindAll(x => x.Equals(Material.RedPaint)));
+            rubberInFactory.AddRange(_materialsInFactory.FindAll(x => x.Equals(Material.Rubber)));
+            screwsInFactory.AddRange(_materialsInFactory.FindAll(x => x.Equals(Material.Screws)));
+            steelInFactory.AddRange(_materialsInFactory.FindAll(x => x.Equals(Material.Steel)));
+            woodInFactory.AddRange(_materialsInFactory.FindAll(x => x.Equals(Material.Wood)));
         }
 
         //Checking how much each recipe requier from each material and try if each list om each material contains the same amount or more.

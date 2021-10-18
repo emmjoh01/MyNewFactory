@@ -23,7 +23,7 @@ namespace MyNewFactory
             for (int i = 0; i < 6; i++)
             {
                 materialsInStorage.Add((Material)i);
-                materialAmountInStorage[i] = new Random().Next(2, 16);
+                materialAmountInStorage[i] = new Random().Next(5, 16);
             }
         }
 
@@ -60,8 +60,17 @@ namespace MyNewFactory
                 ShowStorage();
                 Console.WriteLine();
                 ShowMaterialsToSend();
-                Console.WriteLine("Enter the number for which material you want to send to the factory: ");
+                Console.WriteLine("Enter the number for which material you want to send to the factory (press a to send all): ");
                 var inputKey = Console.ReadKey(true).KeyChar;
+                if (inputKey == 'a')
+                {
+                    materialsToSendToFactory = (TryToProduceWithWhatsLeft());
+                    for (int i = 0; i < materialAmountInStorage.Length; i++)
+                    {
+                        materialAmountInStorage[i] = 0;
+                    }
+                    break;
+                }
                 if (char.IsDigit(inputKey)) 
                 {
                     int userInput = int.Parse(inputKey.ToString());
@@ -123,7 +132,7 @@ namespace MyNewFactory
         }
         public void ShowProductsMade()
         {
-            Console.WriteLine("Products that you've produced!");
+            Console.WriteLine("Products that you've produced:");
             for (int i = 0; i < productsDone.Count; i++)
             {
                 Console.WriteLine(productsDone[i]);
