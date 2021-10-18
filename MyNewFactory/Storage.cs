@@ -51,6 +51,7 @@ namespace MyNewFactory
 
         public void UserPicksMaterial()
         {
+            Console.Title = "The Magical Storage";
             materialsToSendToFactory.Clear();
             while (true)
             {

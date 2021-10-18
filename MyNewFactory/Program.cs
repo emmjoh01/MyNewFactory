@@ -9,7 +9,7 @@ namespace MyNewFactory
             Storage myMagicalStorage = new();
             Factory myMagicalFactory = new();
             bool isPossibleToProduceMore = true;
-            Console.WriteLine("Welcome to the magic Factory Game! Lets start by going to the storage and pick som material ti use!");
+            Console.WriteLine("Welcome to the magic Factory Game! Lets start by going to the storage and pick som material to use!");
             //While 
             while (isPossibleToProduceMore)
             {
@@ -21,6 +21,28 @@ namespace MyNewFactory
 
                 //MatchMaking materials and products, true is sent in true because it is the user who sent in these materials
                 myMagicalFactory.MatchingRecipesWithMaterial(true);
+
+                Console.Clear();
+                Console.Title = "The Magic Factory";
+                //Making loadingscreen a little funnier.... or just less fast....
+                char[] loading = "Looking for matching blueprint".ToCharArray();
+                for (int i = 0; i < loading.Length; i++)
+                {
+                    Console.Write(loading[i]);
+                    System.Threading.Thread.Sleep(75);
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    Console.Write(".");
+                    System.Threading.Thread.Sleep(100);
+                    Console.Write(".");
+                    System.Threading.Thread.Sleep(100);
+                    Console.Write(".");
+                    System.Threading.Thread.Sleep(100);
+                    Console.Clear();
+                    Console.Write("Looking for matching blueprint");
+                }
+                Console.Clear();
 
                 //Returning material-leftovers from factory
                 myMagicalStorage.ReceivingMaterialLeftOvers(myMagicalFactory.fabricInFactory, myMagicalFactory.redPaintInFactory, myMagicalFactory.rubberInFactory, myMagicalFactory.screwsInFactory, myMagicalFactory.steelInFactory, myMagicalFactory.woodInFactory);
@@ -47,7 +69,6 @@ namespace MyNewFactory
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Nothing more is possible to produce.");
             Console.ResetColor();
-            Console.ReadKey();
         }
     }
 }
